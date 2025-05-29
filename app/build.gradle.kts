@@ -1,10 +1,11 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
-
 }
 
 android {
@@ -26,13 +27,14 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeCompiler {
@@ -44,6 +46,19 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    defaultConfig {
+
+        val tmdbApiKey: String =
+            project.rootProject
+                .file("local.properties")
+                .inputStream()
+                .use { Properties().apply { load(it) } }
+                .getProperty("TMDB_API_KEY") ?: throw IllegalStateException("TMDB_API_KEY not found")
+
+        buildConfigField("String", "TMDB_API_KEY", "\"$tmdbApiKey\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
     }
 }
 
@@ -69,6 +84,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
     implementation(libs.gson.converter)
 
     implementation(libs.coil)
@@ -80,8 +96,8 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
-
     implementation(libs.hilt.android)
+
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
