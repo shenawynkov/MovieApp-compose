@@ -76,7 +76,3 @@ Dependency Injection is managed throughout the application using Hilt.
 *   Actor/Crew detail screens.
 *   Offline caching strategy for movie details and images beyond OkHttp's HTTP cache.
 *   Unit and E2E tests.
-
----
-
-This README provides a comprehensive overview of the MovieApp project, its architecture, features, and setup instructions. 
