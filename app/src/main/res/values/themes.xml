@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.MovieApp" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- For example, you can set the status bar color if not handled by Jetpack Compose theme -->
+        <!-- <item name="android:statusBarColor">@color/your_status_bar_color</item> -->
+    </style>
+</resources> 

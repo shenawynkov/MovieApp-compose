@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">MovieApp</string>
+
+    <!-- HTTP Errors -->
+    <string name="error_access_denied">Access Denied. You may not have permission to view this content.</string>
+    <string name="error_not_found">The item you\'re looking for wasn\'t found.</string>
+    <string name="error_bad_request">There was a problem with your request. Please try again.</string>
+    <string name="error_server_unavailable">The server is currently unavailable. Please try again later.</string>
+    <string name="error_service_unexpected">An unexpected service error occurred. Please try again.</string>
+
+    <!-- Network Errors -->
+    <string name="error_no_connection">Unable to connect. Please check your internet connection and try again.</string>
+
+    <!-- API Validation Errors -->
+    <string name="error_api_validation">There was a problem with the data received. Please try again.</string>
+
+    <!-- Data Source Errors -->
+    <string name="error_unexpected_data">An unexpected error occurred while loading data. Please try again.</string>
+
+    <!-- Generic Fallback Errors -->
+    <string name="error_access_denied_service">Access Denied. You may not have permission to perform this action.</string>
+    <string name="error_not_found_service">The requested item could not be found.</string>
+    <string name="error_service_unavailable_fallback">The service is temporarily unavailable. Please try again later.</string>
+    <string name="error_network_service_code">A network error occurred. Please check your connection and try again.</string>
+    <string name="error_network_connection_fallback">A network connection problem occurred. Please check your connection and try again.</string>
+
+    <!-- Unknown Error -->
+    <string name="error_unknown">An unknown error occurred. Please try again.</string>
+
+    <!-- Movie List Screen Empty/Info States -->
+    <string name="search_query_too_short">Please enter at least 3 characters to search.</string>
+    <string name="search_no_results">No movies found for \"%1$s\".</string>
+    <string name="popular_movies_empty">No popular movies available. Pull to refresh or check connection.</string>
+    <string name="movies_empty_generic">No movies to display.</string>
+
+    <!-- MovieListScreen UI Elements -->
+    <string name="search_bar_label">Search Movies</string>
+    <string name="search_icon_desc">Search Icon</string>
+    <string name="clear_search_desc">Clear Search</string>
+    <string name="overview_not_available">Overview not available.</string>
+    <string name="remove_from_watchlist">Remove from Watchlist</string>
+    <string name="add_to_watchlist">Add to Watchlist</string>
+    <string name="retry_button">Retry</string>
+
+    <!-- MovieListViewModel -->
+    <string name="unknown_year">Unknown Year</string>
+
 </resources>

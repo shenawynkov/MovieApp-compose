@@ -5,5 +5,5 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "watchlist")
 data class WatchlistEntry(
-    @PrimaryKey val movieId: Int,
+    @PrimaryKey val movieId: Int
 )

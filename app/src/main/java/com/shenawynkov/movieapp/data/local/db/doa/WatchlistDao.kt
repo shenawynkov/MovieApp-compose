@@ -16,7 +16,4 @@ interface WatchlistDao {
 
     @Query("SELECT EXISTS(SELECT * FROM watchlist WHERE movieId = :id)")
     suspend fun exists(id: Int): Boolean
-
-    @Query("SELECT movieId FROM watchlist")
-    suspend fun getAllIds(): List<Int>
 }

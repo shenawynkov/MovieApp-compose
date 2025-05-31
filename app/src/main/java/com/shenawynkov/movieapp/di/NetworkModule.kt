@@ -1,5 +1,6 @@
 package com.shenawynkov.movieapp.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.shenawynkov.movieapp.BuildConfig
@@ -8,7 +9,9 @@ import com.shenawynkov.movieapp.data.remote.interceptor.ApiKeyInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -39,17 +42,22 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
+        @ApplicationContext context: Context,
         loggingInterceptor: HttpLoggingInterceptor,
         apiKeyInterceptor: ApiKeyInterceptor,
-    ): OkHttpClient =
-        OkHttpClient
+    ): OkHttpClient {
+        val cacheSize = 10 * 1024 * 1024 // 10 MB
+        val cache = Cache(context.cacheDir, cacheSize.toLong())
+        return OkHttpClient
             .Builder()
+            .cache(cache)
             .addInterceptor(apiKeyInterceptor)
             .addInterceptor(loggingInterceptor)
             .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .writeTimeout(20, TimeUnit.SECONDS)
             .build()
+    }
 
     @Provides
     @Singleton
